@@ -150,26 +150,6 @@ def update(id):
         note= Notes.query.filter_by(id=int(id)).first()
         return render_template ('update.html',note=note,notes=notes)
 
-        
-
-            
-
-            
-
-        
-
-
-
-
-
-   
-
-
-
-
-
-    
-
 
 @app.route('/logout')
 def logout():
