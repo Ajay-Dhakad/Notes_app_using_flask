@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='notecss.css') }}">
+    <title>MyNotes</title>
+  
+</head>
+<body>
+    <header>
+        <div class="user-profile">
+            <img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="User Profile Image">
+            <p style="font-size: 20px; font-family:'Courier New', Courier, monospace;"><b>{{user.name}}</b></p>
+        </div>
+        <div class="center">
+            <h1>MyNotes</h1>
+        </div>
+        <div class="right">
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Note input card -->
+    <div class="note-card">
+        <div class="note-form">
+            <h2>Add a New Note</h2>
+            <form method="post" action="/">
+                <input type="text" name="title" placeholder="Title" id="noteTitle" required>
+                <textarea name="desc" placeholder="Description" id="noteDescription" required></textarea>
+                <button type="submit">Add Note</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+
+
+    <!-- Rest of your website content goes heres -->
+
+<!-- Sample Saved Note with a Different Class -->
+{% for note in notes %}
+<div class="saved-note">
+    <h2>{{note.notetitle}}</h2>
+    <p>{{note.notedesc}}</p>
+    <div class="note-actions">
+        <a href="/edit/{{note.id}}"><button class="edit-button">Edit</button></a>
+        <a href="/delete/{{note.id}}"><button class="delete-button">Delete</button></a>
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+    
+</body>
+</html>

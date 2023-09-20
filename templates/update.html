@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='notecss.css') }}">
+    <title>MyNotes</title>
+  
+</head>
+<body>
+    <header>
+        <div class="user-profile">
+            <img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="User Profile Image">
+            <p style="font-size: 20px; font-family:'Courier New', Courier, monospace;"><b>{{notes.name}}</b></p>
+        </div>
+        <div class="center">
+            <h1>MyNotes</h1>
+        </div>
+        <div class="right">
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+           
+        </div>
+    </header>
+
+    <div class="note-card">
+        <div class="note-form">
+            <h2>Edit Your Note</h2>
+            <form method="post" action="/edit/{{note.id}}">
+                <input type="text" name="title" value="{{note.notetitle}}" id="noteTitle" required>
+                <input type="text" name="desc" value="{{note.notedesc}}" id="noteDescription" id="noteTitle" required></input>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+        
+</body>
+</html>
