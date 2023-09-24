@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notesapp.db'
 
 db=SQLAlchemy(app)
 
-app.secret_key="fjhfweoiddjhsljqwld87e837iuhfkjvas//"
+app.secret_key="your_secret_key"
 
 class Notes(db.Model):
     id= db.Column('id',db.Integer ,primary_key=True )
