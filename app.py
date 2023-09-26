@@ -101,6 +101,8 @@ def notes():
             db.session.add(new_note)
             db.session.commit()
 
+            return redirect('/')
+
         user = Users.query.filter_by(email=session['user']).first() #to get the name
 
         notes=Notes.query.filter_by(userid=session['user']).all()       #to get the notes of the user
